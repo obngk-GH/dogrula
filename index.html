@@ -82,22 +82,29 @@ dt{color:var(--muted)} dd{margin:0;overflow-wrap:anywhere}
 
   <section class="panel" id="filebox" hidden aria-labelledby="h-file">
     <h2 id="h-file" data-t="file">ELİNİZDEKİ DOSYA BU BELGE Mİ?</h2>
+    <p class="msg" data-t="fsel">Belge dosyasını (PDF) seçin; QR fotoğrafı değil.</p>
     <div class="file"><input id="pdf" type="file" aria-describedby="file-note"></div>
     <p class="msg" id="file-note" data-t="fnote">Dosya bu cihazdan çıkmaz; parmak izi (SHA-256) tarayıcınızda hesaplanır ve kayıttakiyle karşılaştırılır.</p>
     <p class="msg" id="file-out" aria-live="polite"></p>
   </section>
 
+  <section class="panel" id="logbox" hidden>
+    <p class="msg" data-t="lognote">Bu sayfa bilgi göndermez. Doğrulamanın kayda geçmesi ve belge sahibine iletilmesi için formu doldurun.</p>
+    <a class="go" id="logbtn" href="#" target="_blank" rel="noopener" data-t="logbtn" style="text-decoration:none;text-align:center">Doğrulamayı kayda geçir</a>
+  </section>
+
   <p class="foot" data-t="foot">Bu sayfa yalnız belge numarası, başlık, revizyon, tarih ve geçerlilik durumunu gösterir; belgenin içeriğini göstermez. Kayıtlar şifrelidir; yalnız numarayı ve kodu bilen görüntüler. Geçerli sürüm her zaman kayıttaki son revizyondur.</p>
 </main>
 
-<script id="reg" type="application/json">{"v":2,"records":{"95265b9aac554373962251fbfd9cbfa6d16797cecdd19359d05714f5b93632ae":{"iv":"8yGDkSzy7QT2BuNL","ct":"bpk42Y1+FQTDI8b69UPn+xDqeNtT9l/Jhn1oT3fF0Nkc67uYAyTuIqmrzLoB8IaljIQb0lE2Y0EmyHWH0vdQMyCcjWo6oOX5+BGmf+3mU7+5XkzWuSkCg+8HiZAz2Oq81Bww651QqUyCapeFLkcbC3AVSy4pwMhFsIdyAyjL7lBc5YF1S5qyVaN3PgoLxyPshxKre0gAnnIxxzPsoPhJLg6lhpgT772RRgFISf99DALg7Uz4/dTz70owpTo4pyRXS1mVJM9CR5VC3eZ7CuOkMy0Fk1FsuKACG0cAu14anWUiQCq1dN42RRlBuw0vAlxvw8mgaTw/zB45sBBLaJfclZ0MUZOp9pmoDr/cBJ4gekzYFaWq2BQsMjvDznLLxdv/+54JSQk5"}}}</script>
+<script id="reg" type="application/json">{"v":2,"records":{"95265b9aac554373962251fbfd9cbfa6d16797cecdd19359d05714f5b93632ae":{"iv":"CEwixVwUyR+Ttg4v","ct":"6BANvB9ML0Xn/AAubQjjXsf6JH9r8dQ6b+Eozn8TREjklyDR5yyAe2VV9+Y7hJV+GuBOcSJ4HFyD6btddk7awlWo/xAl8KewjoOcz7gtpg9EazLbt156pD3qR6EnmqKmNm+vriALj5EdcUjGcDp99l5KbvQPBlx6LsAbeNo+22M1+HgU+XRF5bjMYs9qHwN/tUQ0er39QI7dnSYldcaHmX5G+5CJfCON3k+E2m1NO2i6i45UWAN7XsRGlILFOvRJzwrb5dmYnnimmjEohA2oyxtmZws+bEvZxHJlB4WhLNw90IvF5O23YR/BhlwVnZMZ1bhJohpWXSWzVP6UhpwS6TLq0a4v3OAscNlJ8UhaLx3HqpoRQpGt3NVJh1+z1yPzHhYLnRtF"}}}</script>
 <script>
 (function(){
   const REG=JSON.parse(document.getElementById('reg').textContent);
+  const FORM="https://forms.cloud.microsoft/Pages/ResponsePage.aspx?id=FGPPPIMtv0uUhaeQbiFqXmUnPtUBEfNInZ35GEgCg2VUQVZVTThESEZDRTY1RDBXSjNaOUE5N0FQUC4u&r283985c5880f4c3e8b7306b60683031b=NOXNOX&rba3cc2671d9b40b4814303c22c650ef3=KODKOD";
   const $=id=>document.getElementById(id);
   const T={
     tr:{kick:"AFA TECHNIC · HAT BAKIM MÜDÜRLÜĞÜ · O²S BELGE SERİSİ",h1:"Belge Doğrulama",form:"BELGE NUMARASI VE KOD",lno:"Belge no",lcode:"Doğrulama kodu",go:"Doğrula",
-      hint:"QR kodu okuttuysanız bilgiler kendiliğinden dolar. Kod, belgedeki QR'ın yanında yazılıdır.",file:"ELİNİZDEKİ DOSYA BU BELGE Mİ?",
+      hint:"QR kodu okuttuysanız bilgiler kendiliğinden dolar. Kod, belgedeki QR'ın yanında yazılıdır.",file:"ELİNİZDEKİ DOSYA BU BELGE Mİ?",fsel:"Belge dosyasını (PDF) seçin; QR fotoğrafı değil.",lognote:"Bu sayfa bilgi göndermez. Doğrulamanın kayda geçmesi ve belge sahibine iletilmesi için formu doldurun.",logbtn:"Doğrulamayı kayda geçir",
       fnote:"Dosya bu cihazdan çıkmaz; parmak izi (SHA-256) tarayıcınızda hesaplanır ve kayıttakiyle karşılaştırılır.",
       foot:"Bu sayfa yalnız belge numarası, başlık, revizyon, tarih ve geçerlilik durumunu gösterir; belgenin içeriğini göstermez. Kayıtlar şifrelidir; yalnız numarayı ve kodu bilen görüntüler. Geçerli sürüm her zaman kayıttaki son revizyondur.",
       need:"Belge numarasını ve 8 karakterlik kodu girin.",nobrowser:"Bu tarayıcı doğrulama hesaplamasını desteklemiyor. Başka bir tarayıcıda deneyin.",
@@ -107,7 +114,7 @@ dt{color:var(--muted)} dd{margin:0;overflow-wrap:anywhere}
       match:"Eşleşti",matchmsg:"Dosya, kayıttaki belgeyle birebir aynı.",nomatch:"Eşleşmedi",nomatchmsg:"Dosya bu kayıttaki sürümle aynı değil; değiştirilmiş veya farklı bir revizyon olabilir.",readerr:"Dosya okunamadı. Tekrar seçin.",
       st:{"Geçerli":["p-ok","Geçerli"],"Taslak":["p-warn","Taslak, henüz yayımlanmadı"],"Yerine geçti":["p-mut","Yerine geçti"],"İptal":["p-bad","İptal"],"Deneme":["p-mut","Deneme kaydı"]}},
     en:{kick:"AFA TECHNIC · LINE & BASE MAINTENANCE · O²S DOCUMENT SERIES",h1:"Document Verification",form:"DOCUMENT NUMBER AND CODE",lno:"Document no",lcode:"Verification code",go:"Verify",
-      hint:"Scanning the QR code fills these in. The code is printed next to the QR on the document.",file:"IS YOUR FILE THIS DOCUMENT?",
+      hint:"Scanning the QR code fills these in. The code is printed next to the QR on the document.",file:"IS YOUR FILE THIS DOCUMENT?",fsel:"Select the document file (PDF), not a photo of the QR.",lognote:"This page sends nothing. To log this verification and notify the issuer, fill in the form.",logbtn:"Log this verification",
       fnote:"The file never leaves this device; its SHA-256 fingerprint is computed in your browser and compared with the record.",
       foot:"This page shows only the document number, title, revision, date and validity status, never the document content. Records are encrypted; only someone holding the number and code can open one. The valid version is always the latest revision on record.",
       need:"Enter the document number and the 8-character code.",nobrowser:"This browser cannot run the verification. Please try another browser.",
@@ -141,7 +148,7 @@ dt{color:var(--muted)} dd{margin:0;overflow-wrap:anywhere}
     $('filebox').hidden=false;$('file-out').textContent=(d.hashes&&d.hashes.length)?'':t.nohash;
   }
   async function verify(no,code){
-    const r=$('result'),t=T[L];r.hidden=false;$('filebox').hidden=true;current=null;lastNo=no;
+    const r=$('result'),t=T[L];r.hidden=false;$('filebox').hidden=true;$('logbox').hidden=true;current=null;lastNo=no;
     if(!no||code.length!==8){r.innerHTML=`<p class="msg">${t.need}</p>`;return}
     let rec;
     try{
@@ -154,6 +161,7 @@ dt{color:var(--muted)} dd{margin:0;overflow-wrap:anywhere}
     }catch(err){r.innerHTML=`<p class="msg">${t.nobrowser}</p>`;return}
     if(!rec){r.innerHTML=`<div class="res-head"><span class="no">${esc(no)}</span><span class="pill p-bad">${t.notfound}</span></div><p class="msg">${t.nfmsg}</p>`;return}
     current=rec;render(rec);
+    $('logbtn').href=FORM.replace('NOXNOX',encodeURIComponent(no)).replace('KODKOD',encodeURIComponent(code));$('logbox').hidden=false;
   }
   $('f').addEventListener('submit',e=>{e.preventDefault();verify(norm($('no').value),norm($('code').value))});
   $('pdf').addEventListener('change',async e=>{
